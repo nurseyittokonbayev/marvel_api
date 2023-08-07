@@ -4,8 +4,10 @@ import 'package:marvel_api/models/models.dart';
 import 'package:marvel_api/movie_item.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -40,10 +42,12 @@ class _HomePageState extends State<HomePage> {
           movies = fetchedData;
         });
       } else {
+        // ignore: avoid_print
         print(
             'Ошибка: Не удалось получить данные. Код ответа: ${res.statusCode}');
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Ошибка: $e');
     }
   }

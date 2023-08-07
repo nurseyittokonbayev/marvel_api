@@ -55,8 +55,13 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(24),
                       bottomRight: Radius.circular(24)),
-                  child: CachedNetworkImage(
-                      imageUrl: widget.movie.coverUrl.toString())),
+                  child: widget.movie.coverUrl != null
+                      ? CachedNetworkImage(
+                          imageUrl: widget.movie.coverUrl.toString(),
+                          placeholder: (context, url) =>
+                              Image.asset('assets//Mar.jpg'),
+                        )
+                      : Image.asset('assets//Mar.jpg')),
             ),
           ),
           SliverToBoxAdapter(
@@ -85,7 +90,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       child: Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.grey,
@@ -117,7 +122,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         width: 5,
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.grey,
@@ -156,4 +161,3 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     );
   }
 }
-
